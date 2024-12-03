@@ -26,7 +26,7 @@
     </div>
 
     <script type="module" charset="utf-8">
-        import UBViewer from './UBViewer.js';
+        import MyViewer from './MyViewer.js';
 
         function isWasmSupported() {
             try {
@@ -74,7 +74,7 @@
                 updateCanvasSize();
 
 
-                self.UBViewer = await new UBViewer({
+                self.MyViewer = await new MyViewer({
                     canvas: canvas3d,
                     qtContainerElements: [screen2d],
                 });
@@ -82,9 +82,9 @@
                 preloaderBlock.style.display = 'none';
                 errorBlock.style.display = 'none'
 
-                self.UBViewer.setGetCanvasWidthCallback(() => { return canvas.width; });
-                self.UBViewer.setGetCanvasHeightCallback(() => { return canvas.height; });
-                self.UBViewer.resize();
+                self.MyViewer.setGetCanvasWidthCallback(() => { return canvas.width; });
+                self.MyViewer.setGetCanvasHeightCallback(() => { return canvas.height; });
+                self.MyViewer.resize();
             }
             catch (e) {
                 console.error(e);
