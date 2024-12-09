@@ -4,25 +4,140 @@
     <meta charset=utf-8>
     <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
+    <style type="text/css">
+       * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+
+        nav {
+            height: 100vh;
+            background-color: dodgerblue;
+            width: 200px;
+            padding: 10px;
+            transform: translateX(200px);
+            transition: transform .5s ease-in-out;
+            float:left;
+            /*display: inline-block;*/
+        }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav .logo {
+                margin: 10px 0 20px;
+            }
+
+                nav .logo a {
+                    font-size: 22px;
+                    color: white;
+                    padding: 10px;
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    transition: .3s ease;
+                }
+
+                    nav .logo a:hover {
+                        padding-right: 20px;
+                    }
+
+                    nav .logo a i {
+                        font-size: 27px;
+                        margin-right: 10px;
+                        transition: .5s ease-in-out;
+                    }
+
+                    nav .logo a:hover i {
+                        transform: rotate(180deg);
+                    }
+
+            nav ul li {
+                padding: 10px;
+                font-weight: 500;
+            }
+
+                nav ul li a {
+                    color: #fff;
+                    transition: all .5s ease;
+                }
+
+                    nav ul li a:hover {
+                        background-color: #fff;
+                        color: dodgerblue;
+                        display: block;
+                        padding-right: 10px;
+                    }
+
+        canvas {
+            /*           width: 100%;
+            height: 100vh;*/
+            display: inline;
+            border: 0 none;
+        }
+
+        figure {
+            overflow: visible;
+            height: 100%;
+            width: 100%;            
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div #mainBlock {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            overflow: hidden
+        }
+
+    </style>
     <title>Пример</title>
 </head>
 <body>
-    <figure style="overflow:visible; height: 100%; width: 100%; display: flex; position: absolute; justify-content: center; align-items: center;" id="preloaderBlock">
+    <figure id="preloaderBlock" style="display: flex;">
         <center style="margin-top:1.5em; line-height:150%">
             <strong> Загрузка программы просмотра </strong>
             <noscript> JavaScript is disabled. Please enable JavaScript to use this application. </noscript>
         </center>
     </figure>
 
-    <figure style="overflow:visible; height: 100%; width: 100%; display: none; position: absolute; justify-content: center; align-items: center;" id="errorBlock">
+    <figure id="errorBlock" style="display: none;">
         <center style="margin-top:1.5em; line-height:150%">
             <strong id="errorMsg"> Внутреняя ошибка программы просмотра. Сообщите разработчикам и воспользуйтесь сервисом позднее </strong>
         </center>
     </figure>
 
-    <div style="width: 100%; height: 100%; white-space: nowrap; overflow: hidden;">
-        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1 style="border: 0 none; height: inherit; width: 50%;"></canvas>        
+    <div id="mainBlock" style="display: none">
+        <nav class="active">
+            <div class="logo">
+                Действия
+            </div>
+            <ul>
+                <li><a href="# onclick="">Отсечь по 2-ой этаж</a></li>
+                <li><a href="# onclick="">Отсечь по 1-ый этаж</a></li>
+            </ul>
+        </nav>
+
+        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
     </div>
+
 
     <script type="module" charset="utf-8">
         import MyViewer from './MyViewer.js';
@@ -43,8 +158,10 @@
         async function initViewer() {
             try {
                 var preloaderBlock = document.querySelector('#preloaderBlock');
-                var errorBlock = document.querySelector('#errorBlock');                
+                var errorBlock = document.querySelector('#errorBlock');
                 var canvas = document.querySelector('#canvas');
+                var mainBlock = document.querySelector('#mainBlock');
+                
 
                 if (!isWasmSupported()) {
                     var errorMsg = document.querySelector('#errorMsg');
@@ -58,13 +175,9 @@
                     var aSizeX = Math.min(window.innerWidth, window.screen.availWidth);
                     var aSizeY = Math.min(window.innerHeight, window.screen.availHeight);
                     aSizeX = Math.max(300, aSizeX - 30);
-                    aSizeY = Math.max(300, aSizeY - 30);
-                    canvas.style.width = aSizeX + "px";
-                    canvas.style.height = aSizeY + "px";
-
+                    aSizeY = Math.max(300, aSizeY - 30); 
                     canvas.style.width = "100%";
-                    canvas.style.height = "100%";
-
+                    canvas.style.height = "100vh";
 
                     var aDevicePixelRatio = window.devicePixelRatio || 1;
                     canvas.width = aSizeX * aDevicePixelRatio;
@@ -80,7 +193,8 @@
                 });
 
                 preloaderBlock.style.display = 'none';
-                errorBlock.style.display = 'none'               
+                errorBlock.style.display = 'none';
+                mainBlock.style.display = "block";
 
                 self.MyViewer.resize();
             }
@@ -90,7 +204,7 @@
 
                 preloaderBlock.style.display = 'none';
                 errorBlock.style.display = 'flex';
-                canvas.style.display = 'none';
+                mainBlock.style.display = 'none';
             }
         }
 
