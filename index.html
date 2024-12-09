@@ -11,8 +11,10 @@
             box-sizing: border-box;
         }
 
-        a {
+        button {
             text-decoration: none;
+            border: 0 none;
+            background: none;
         }
 
         ul {
@@ -41,43 +43,21 @@
 
             nav .logo {
                 margin: 10px 0 20px;
+                color: white;
+                font-weight: 700;
             }
-
-                nav .logo a {
-                    font-size: 22px;
-                    color: white;
-                    padding: 10px;
-                    font-weight: 700;
-                    display: flex;
-                    align-items: center;
-                    transition: .3s ease;
-                }
-
-                    nav .logo a:hover {
-                        padding-right: 20px;
-                    }
-
-                    nav .logo a i {
-                        font-size: 27px;
-                        margin-right: 10px;
-                        transition: .5s ease-in-out;
-                    }
-
-                    nav .logo a:hover i {
-                        transform: rotate(180deg);
-                    }
-
+             
             nav ul li {
                 padding: 10px;
                 font-weight: 500;
             }
 
-                nav ul li a {
+                nav ul li button {
                     color: #fff;
                     transition: all .5s ease;
                 }
 
-                    nav ul li a:hover {
+                    nav ul li button:hover {
                         background-color: #fff;
                         color: dodgerblue;
                         display: block;
@@ -130,8 +110,13 @@
                 Действия
             </div>
             <ul>
-                <li><a href="# onclick="">Отсечь по 2-ой этаж</a></li>
-                <li><a href="# onclick="">Отсечь по 1-ый этаж</a></li>
+                <li><button onclick="">Подсветить ошибки</button></li>
+                <li><button onclick="">Отсечь по 1-ой этаж</button></li>
+                <li><button onclick="">Отсечь по 2-ый этаж</button></li>
+                <li><button onclick="">Статус строительства</button></li>
+                <li><button onclick="">Перерасход бетона</button></li>
+                <li><button onclick="">Секущий куб</button></li>
+
             </ul>
         </nav>
 
@@ -182,7 +167,12 @@
                     var aDevicePixelRatio = window.devicePixelRatio || 1;
                     canvas.width = aSizeX * aDevicePixelRatio;
                     canvas.height = aSizeY * aDevicePixelRatio;
+
+                    self.MyViewer.resize();
                 }
+
+                window.onresize = updateCanvasSize;
+
 
                 self.MyViewer = await new MyViewer({
                     canvas: canvas
@@ -192,11 +182,9 @@
                 errorBlock.style.display = 'none'
                 mainBlock.style.display = 'block'
 
-                window.onresize = updateCanvasSize;
+                                
                 updateCanvasSize();
-
-
-                self.MyViewer.resize();
+                
             }
             catch (e) {
                 console.error(e);
