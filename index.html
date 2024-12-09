@@ -3,7 +3,7 @@
 <head>
     <meta charset=utf-8>
     <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
-    <link rel="shortcut icon" href="lamp.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/png" />
     <title>Пример</title>
 </head>
 <body>
@@ -21,8 +21,7 @@
     </figure>
 
     <div style="width: 100%; height: 100%; white-space: nowrap; overflow: hidden;">
-        <canvas id="canvas3d" oncontextmenu="event.preventDefault()" tabindex=-1 style="border:0 none;background-color:#000; display:none; height: inherit; width: 50%;"></canvas>
-        <div id="screen2d" style="display:inline-block; height: inherit; width: 50%;"></div>
+        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1 style="border: 0 none; height: inherit; width: 50%;"></canvas>        
     </div>
 
     <script type="module" charset="utf-8">
@@ -45,24 +44,26 @@
             try {
                 var preloaderBlock = document.querySelector('#preloaderBlock');
                 var errorBlock = document.querySelector('#errorBlock');                
-                var canvas3d = document.querySelector('#canvas3d');
-                var screen2d = document.querySelector('#screen2d');
+                var canvas = document.querySelector('#canvas');
 
                 if (!isWasmSupported()) {
                     var errorMsg = document.querySelector('#errorMsg');
-                    errorMsg.textContent = "Ваш браузер не поддерживает технологию WebAssembly, либо она выключена в настройках. Запрет работы JavaScript также может быть причиной";
+                    errorMsg.textContent = "Ваш браузер не поддерживает технологию WebAssembly, либо она выключена в настройках браузера. Обновите браузер либо перезайдите на страницу с помощью другого браузера. Запрет работы JavaScript также может быть причиной неполадок";
                     throw new Error("WebAssembly is not supported");
                 }
 
                 function updateCanvasSize() {
-                    var canvas = document.getElementById('canvas3d');
+                    var canvas = document.getElementById('canvas');
 
                     var aSizeX = Math.min(window.innerWidth, window.screen.availWidth);
                     var aSizeY = Math.min(window.innerHeight, window.screen.availHeight);
                     aSizeX = Math.max(300, aSizeX - 30);
-                    aSizeY = Math.max(300, aSizeY - 200);
+                    aSizeY = Math.max(300, aSizeY - 30);
                     canvas.style.width = aSizeX + "px";
                     canvas.style.height = aSizeY + "px";
+
+                    canvas.style.width = "100%";
+                    canvas.style.height = "100%";
 
 
                     var aDevicePixelRatio = window.devicePixelRatio || 1;
@@ -75,15 +76,12 @@
 
 
                 self.MyViewer = await new MyViewer({
-                    canvas: canvas3d,
-                    qtContainerElements: [screen2d],
+                    canvas: canvas
                 });
 
                 preloaderBlock.style.display = 'none';
-                errorBlock.style.display = 'none'
+                errorBlock.style.display = 'none'               
 
-                self.MyViewer.setGetCanvasWidthCallback(() => { return canvas.width; });
-                self.MyViewer.setGetCanvasHeightCallback(() => { return canvas.height; });
                 self.MyViewer.resize();
             }
             catch (e) {
@@ -92,8 +90,7 @@
 
                 preloaderBlock.style.display = 'none';
                 errorBlock.style.display = 'flex';
-                screen2d.style.display = 'none';
-                canvas3d.style.display = 'none';
+                canvas.style.display = 'none';
             }
         }
 
