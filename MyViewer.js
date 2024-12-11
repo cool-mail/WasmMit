@@ -204,7 +204,7 @@ Module['FS_createPath']("/data", "ubweb", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/ubweb/ArtSchool2.ubweb", "start": 5535, "end": 4011140}], "remote_package_size": 4011140});
+    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/ubweb/ArtSchool2.ubweb", "start": 5535, "end": 4011140}, {"filename": "/data/ubweb/ArtSchool3.ubweb", "start": 4011140, "end": 8032478}], "remote_package_size": 8032478});
 
   })();
 
@@ -1126,7 +1126,7 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  5971820: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
+  5982236: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
 };
 function consoleInfo(s) { console.info(UTF8ToString(s)); }
 function consoleWarn(s) { console.warn(UTF8ToString(s)); }
@@ -12881,6 +12881,8 @@ var wasmImports = {
   /** @export */
   invoke_diiddi: invoke_diiddi,
   /** @export */
+  invoke_diidi: invoke_diidi,
+  /** @export */
   invoke_diii: invoke_diii,
   /** @export */
   invoke_diiii: invoke_diiii,
@@ -12916,6 +12918,8 @@ var wasmImports = {
   invoke_iidd: invoke_iidd,
   /** @export */
   invoke_iiddd: invoke_iiddd,
+  /** @export */
+  invoke_iidddd: invoke_iidddd,
   /** @export */
   invoke_iiddddd: invoke_iiddddd,
   /** @export */
@@ -12975,6 +12979,8 @@ var wasmImports = {
   /** @export */
   invoke_iiidd: invoke_iiidd,
   /** @export */
+  invoke_iiiddd: invoke_iiiddd,
+  /** @export */
   invoke_iiidddd: invoke_iiidddd,
   /** @export */
   invoke_iiidddddd: invoke_iiidddddd,
@@ -12986,6 +12992,8 @@ var wasmImports = {
   invoke_iiidddi: invoke_iiidddi,
   /** @export */
   invoke_iiidddid: invoke_iiidddid,
+  /** @export */
+  invoke_iiidddii: invoke_iiidddii,
   /** @export */
   invoke_iiidddiid: invoke_iiidddiid,
   /** @export */
@@ -13077,6 +13085,8 @@ var wasmImports = {
   /** @export */
   invoke_iiiiiiddiiiii: invoke_iiiiiiddiiiii,
   /** @export */
+  invoke_iiiiiidi: invoke_iiiiiidi,
+  /** @export */
   invoke_iiiiiidii: invoke_iiiiiidii,
   /** @export */
   invoke_iiiiiidiiidd: invoke_iiiiiidiiidd,
@@ -13151,6 +13161,8 @@ var wasmImports = {
   /** @export */
   invoke_vdddiiiii: invoke_vdddiiiii,
   /** @export */
+  invoke_vdddiiiiiiiii: invoke_vdddiiiiiiiii,
+  /** @export */
   invoke_vddi: invoke_vddi,
   /** @export */
   invoke_vddii: invoke_vddii,
@@ -13164,6 +13176,10 @@ var wasmImports = {
   invoke_vdi: invoke_vdi,
   /** @export */
   invoke_vdiddddi: invoke_vdiddddi,
+  /** @export */
+  invoke_vdidii: invoke_vdidii,
+  /** @export */
+  invoke_vdidiii: invoke_vdidiii,
   /** @export */
   invoke_vdiii: invoke_vdiii,
   /** @export */
@@ -13243,6 +13259,8 @@ var wasmImports = {
   /** @export */
   invoke_vif: invoke_vif,
   /** @export */
+  invoke_vifiii: invoke_vifiii,
+  /** @export */
   invoke_vii: invoke_vii,
   /** @export */
   invoke_viid: invoke_viid,
@@ -13252,6 +13270,8 @@ var wasmImports = {
   invoke_viiddd: invoke_viiddd,
   /** @export */
   invoke_viidddd: invoke_viidddd,
+  /** @export */
+  invoke_viiddddd: invoke_viiddddd,
   /** @export */
   invoke_viidddddd: invoke_viidddddd,
   /** @export */
@@ -13325,6 +13345,8 @@ var wasmImports = {
   /** @export */
   invoke_viiiddi: invoke_viiiddi,
   /** @export */
+  invoke_viiiddidi: invoke_viiiddidi,
+  /** @export */
   invoke_viiiddiiii: invoke_viiiddiiii,
   /** @export */
   invoke_viiiddiiiiiiiiiiiiii: invoke_viiiddiiiiiiiiiiiiii,
@@ -13359,6 +13381,8 @@ var wasmImports = {
   /** @export */
   invoke_viiiidddi: invoke_viiiidddi,
   /** @export */
+  invoke_viiiiddiiid: invoke_viiiiddiiid,
+  /** @export */
   invoke_viiiidii: invoke_viiiidii,
   /** @export */
   invoke_viiiidiii: invoke_viiiidiii,
@@ -13368,6 +13392,8 @@ var wasmImports = {
   invoke_viiiiid: invoke_viiiiid,
   /** @export */
   invoke_viiiiidd: invoke_viiiiidd,
+  /** @export */
+  invoke_viiiiiddd: invoke_viiiiiddd,
   /** @export */
   invoke_viiiiidddd: invoke_viiiiidddd,
   /** @export */
@@ -13493,8 +13519,8 @@ var dynCall_jiiii = Module['dynCall_jiiii'] = createExportWrapper('dynCall_jiiii
 var dynCall_iiiiij = Module['dynCall_iiiiij'] = createExportWrapper('dynCall_iiiiij');
 var dynCall_iiiiijj = Module['dynCall_iiiiijj'] = createExportWrapper('dynCall_iiiiijj');
 var dynCall_iiiiiijj = Module['dynCall_iiiiiijj'] = createExportWrapper('dynCall_iiiiiijj');
-var ___start_em_js = Module['___start_em_js'] = 5971436;
-var ___stop_em_js = Module['___stop_em_js'] = 5971820;
+var ___start_em_js = Module['___start_em_js'] = 5981852;
+var ___stop_em_js = Module['___stop_em_js'] = 5982236;
 function invoke_iiiii(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
@@ -13939,6 +13965,17 @@ function invoke_viiddi(index,a1,a2,a3,a4,a5) {
   var sp = stackSave();
   try {
     getWasmTableEntry(index)(a1,a2,a3,a4,a5);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iiiddd(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -14617,6 +14654,17 @@ function invoke_iiidiii(index,a1,a2,a3,a4,a5,a6) {
   }
 }
 
+function invoke_viiiiiddd(index,a1,a2,a3,a4,a5,a6,a7,a8) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_viddiii(index,a1,a2,a3,a4,a5,a6) {
   var sp = stackSave();
   try {
@@ -14643,6 +14691,17 @@ function invoke_iiidddd(index,a1,a2,a3,a4,a5,a6) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_vdddiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15233,6 +15292,17 @@ function invoke_vidddi(index,a1,a2,a3,a4,a5) {
   }
 }
 
+function invoke_diidi(index,a1,a2,a3,a4) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_viddiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
   var sp = stackSave();
   try {
@@ -15248,6 +15318,17 @@ function invoke_iiiiiiiiddiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13)
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_vdidiii(index,a1,a2,a3,a4,a5,a6) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15292,6 +15373,17 @@ function invoke_viiidid(index,a1,a2,a3,a4,a5,a6) {
   var sp = stackSave();
   try {
     getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_viiddddd(index,a1,a2,a3,a4,a5,a6,a7) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15651,6 +15743,28 @@ function invoke_iidddiii(index,a1,a2,a3,a4,a5,a6,a7) {
   }
 }
 
+function invoke_vdidii(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iiidddii(index,a1,a2,a3,a4,a5,a6,a7) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_vif(index,a1,a2) {
   var sp = stackSave();
   try {
@@ -15662,10 +15776,43 @@ function invoke_vif(index,a1,a2) {
   }
 }
 
+function invoke_viiiddidi(index,a1,a2,a3,a4,a5,a6,a7,a8) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_iiiif(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3,a4);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_vifiii(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iidddd(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -16146,6 +16293,17 @@ function invoke_iiddddddiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) {
   }
 }
 
+function invoke_viiiiddiiid(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_viifff(index,a1,a2,a3,a4,a5) {
   var sp = stackSave();
   try {
@@ -16158,6 +16316,17 @@ function invoke_viifff(index,a1,a2,a3,a4,a5) {
 }
 
 function invoke_iidddddd(index,a1,a2,a3,a4,a5,a6,a7) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iiiiiidi(index,a1,a2,a3,a4,a5,a6,a7) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
