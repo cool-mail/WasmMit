@@ -3,16 +3,13 @@
 <head>
     <meta charset=utf-8>
     <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <style type="text/css">
-       * {
+        * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-        }
-
-        button {
-
         }
 
         ul {
@@ -20,35 +17,63 @@
         }
 
         body {
-            font-family: sans-serif;            
+            font-family: sans-serif;
         }
 
+        figure {
+            overflow: visible;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            font-size: 40pt;
+        }
+
+        div#mainBlock {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: dodgerblue;
+        }
 
         nav {
-            height: 100vh;            
+            height: 100vh;
             width: 23ex;
             padding: 10px;
             transform: translateX(200px);
-            transition: transform .5s ease-in-out;            
+            transition: transform .5s ease-in-out;
             display: inline-block;
-            vertical-align : top;
+            vertical-align: top;
         }
 
             nav.active {
                 transform: translateX(0);
             }
 
-            nav .logo {
+            nav .logoMenuInvisible {
+                position: fixed;
+                display: inline-block;
+                border: 2px solid green;
+                font-size: 18pt;
+                margin: 1em;
+                color: white;
+                background: dodgerblue;
+                font-weight: 700;
+                font-size: large;
+            }
+
+            nav .logoMenuVisible {
                 margin: 10px 0 20px;
                 color: white;
                 font-weight: 700;
-                font-size: 100%;                
+                font-size: large;
             }
 
             nav ul li {
                 padding: 10px;
                 font-weight: 500;
-                
             }
 
                 nav ul li button {
@@ -78,23 +103,8 @@
             vertical-align: top;
         }
 
-        figure {
-            overflow: visible;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            justify-content: center;
-            align-items: center;
-            font-size: 40pt;
-        }
 
-        div#mainBlock {
-            width: 100%;
-            height: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            background-color: dodgerblue;
-        }
+
 
     </style>
     <title>Пример</title>
@@ -115,19 +125,19 @@
 
     <div id="mainBlock" style="display:none;">
         <nav class="active">
-            <div class="logo">
-                Действия
+            <div id="buttonMenu" class="logoMenuVisible">
+                <button onclick="toggleMenu();">Действия</button>                
             </div>
-            <ul>
-                <li><button onclick="self.MyViewer.createSectionPlaneByLevelId('3SV3DKf65A28IpPmY9Uc79')">Отсечь по 1-ый этаж</button></li>
-                <li><button onclick="self.MyViewer.createSectionPlaneByLevelId('3SV3DKf65A28IpPmY9UcT_')">Отсечь по 2-ой этаж</button></li>
-                <li><button onclick="self.MyViewer.highlightErrors()">Найти ошибки</button></li>
-                <li><button onclick="self.MyViewer.highlightMaterialOverUsage()">Перерасход бетона</button></li>
-                <li><button onclick="self.MyViewer.highlightBuildingStatus()">Статус строительства</button></li>
-                <li><button onclick="self.MyViewer.createSectionBox()">Секущий куб</button></li>
-                <li><button onclick="self.MyViewer.mapNextDraft()">Проекция документа</button></li>
-                <li><button onclick="self.MyViewer.resetToDefaultState()">Перезагрузить</button></li>
-            </ul>
+            <ul id="menu">
+                <li><button onclick="self.MyViewer.createSectionPlaneByLevelId('3SV3DKf65A28IpPmY9Uc79'); deactivateMenu();">Отсечь по 1-ый этаж</button></li>
+                <li><button onclick="self.MyViewer.createSectionPlaneByLevelId('3SV3DKf65A28IpPmY9UcT_'); deactivateMenu();">Отсечь по 2-ой этаж</button></li>
+                <li><button onclick="self.MyViewer.highlightErrors(); deactivateMenu();">Найти ошибки</button></li>
+                <li><button onclick="self.MyViewer.highlightMaterialOverUsage(); deactivateMenu();">Перерасход бетона</button></li>
+                <li><button onclick="self.MyViewer.highlightBuildingStatus(); deactivateMenu();">Статус строительства</button></li>
+                <li><button onclick="self.MyViewer.createSectionBox(); deactivateMenu();">Секущий куб</button></li>
+                <li><button onclick="self.MyViewer.mapNextDraft(); deactivateMenu();">Проекция документа</button></li>
+                <li><button onclick="self.MyViewer.resetToDefaultState(); deactivateMenu();">Перезагрузить</button></li>
+            </ul>            
         </nav>
 
         <canvas id="canvas" oncontextmenu="return false;" tabindex=-1></canvas>
@@ -180,7 +190,7 @@
 
                 }
 
-                //window.onresize = updateCanvasSize;
+                window.onresize = updateCanvasSize;
 
 
                 self.MyViewer = await new MyViewer({
@@ -207,6 +217,26 @@
         }
 
         initViewer();
+
+        
+        var menu = document.querySelector('#menu');
+        var buttonMenu = document.querySelector('#buttonMenu');
+
+        function activateMenu() {
+            menu.style.display = 'block';
+            buttonMenu.style.display = 'none';
+            
+        }
+
+        function deactivateMenu() {
+            menu.style.display = 'none';
+            buttonMenu.className = 'logoMenuInvisible';
+        }
+
+        function toggleMenu() {
+            deactivateMenu();
+
+        }
 
     </script>
 </body>

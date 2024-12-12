@@ -1112,7 +1112,7 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  5964212: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
+  5964148: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
 };
 function consoleInfo(s) { console.info(UTF8ToString(s)); }
 function consoleWarn(s) { console.warn(UTF8ToString(s)); }
@@ -12804,8 +12804,8 @@ var dynCall_viijii = Module['dynCall_viijii'] = createExportWrapper('dynCall_vii
 var dynCall_iiiiij = Module['dynCall_iiiiij'] = createExportWrapper('dynCall_iiiiij');
 var dynCall_iiiiijj = Module['dynCall_iiiiijj'] = createExportWrapper('dynCall_iiiiijj');
 var dynCall_iiiiiijj = Module['dynCall_iiiiiijj'] = createExportWrapper('dynCall_iiiiiijj');
-var ___start_em_js = Module['___start_em_js'] = 5963828;
-var ___stop_em_js = Module['___stop_em_js'] = 5964212;
+var ___start_em_js = Module['___start_em_js'] = 5963764;
+var ___stop_em_js = Module['___stop_em_js'] = 5964148;
 function invoke_iiiii(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
