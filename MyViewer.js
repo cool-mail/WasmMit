@@ -204,7 +204,7 @@ Module['FS_createPath']("/data", "ubweb", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/sectionTexture.png", "start": 5535, "end": 122064}, {"filename": "/data/ubweb/ArtSchool4.ubweb", "start": 122064, "end": 4138768}], "remote_package_size": 4138768});
+    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/sectionTexture.png", "start": 5535, "end": 122064}, {"filename": "/data/ubweb/ArtSchool4.ubweb", "start": 122064, "end": 9095133}], "remote_package_size": 9095133});
 
   })();
 
@@ -1112,7 +1112,7 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  5964724: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
+  5964212: ($0, $1, $2, $3) => { Module.ctx.getBufferSubData($0, $1, HEAPU8.subarray($2, $2 + $3)); }
 };
 function consoleInfo(s) { console.info(UTF8ToString(s)); }
 function consoleWarn(s) { console.warn(UTF8ToString(s)); }
@@ -12804,8 +12804,8 @@ var dynCall_viijii = Module['dynCall_viijii'] = createExportWrapper('dynCall_vii
 var dynCall_iiiiij = Module['dynCall_iiiiij'] = createExportWrapper('dynCall_iiiiij');
 var dynCall_iiiiijj = Module['dynCall_iiiiijj'] = createExportWrapper('dynCall_iiiiijj');
 var dynCall_iiiiiijj = Module['dynCall_iiiiiijj'] = createExportWrapper('dynCall_iiiiiijj');
-var ___start_em_js = Module['___start_em_js'] = 5964340;
-var ___stop_em_js = Module['___stop_em_js'] = 5964724;
+var ___start_em_js = Module['___start_em_js'] = 5963828;
+var ___stop_em_js = Module['___stop_em_js'] = 5964212;
 function invoke_iiiii(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {

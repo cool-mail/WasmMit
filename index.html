@@ -20,18 +20,18 @@
         }
 
         body {
-            font-family: sans-serif;
+            font-family: sans-serif;            
         }
 
 
         nav {
-            height: 100vh;
-            background-color: dodgerblue;
-            width: 200px;
+            height: 100vh;            
+            width: 23ex;
             padding: 10px;
             transform: translateX(200px);
-            transition: transform .5s ease-in-out;
-            float:left;
+            transition: transform .5s ease-in-out;            
+            display: inline-block;
+            vertical-align : top;
         }
 
             nav.active {
@@ -42,7 +42,7 @@
                 margin: 10px 0 20px;
                 color: white;
                 font-weight: 700;
-                font-size: larger;                
+                font-size: 100%;                
             }
 
             nav ul li {
@@ -74,22 +74,26 @@
 
         canvas {
             border: 0 none;
+            display: inline-block;
+            vertical-align: top;
         }
 
         figure {
             overflow: visible;
             height: 100%;
-            width: 100%;            
+            width: 100%;
             position: absolute;
             justify-content: center;
             align-items: center;
+            font-size: 40pt;
         }
 
         div#mainBlock {
             width: 100%;
             height: 100%;
             white-space: nowrap;
-            overflow: hidden
+            overflow: hidden;
+            background-color: dodgerblue;
         }
 
     </style>
@@ -126,7 +130,7 @@
             </ul>
         </nav>
 
-        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+        <canvas id="canvas" oncontextmenu="return false;" tabindex=-1></canvas>
     </div>
 
 
@@ -167,16 +171,16 @@
                     var aSizeY = Math.min(window.innerHeight, window.screen.availHeight);
                     aSizeX = Math.max(300, aSizeX - 30);
                     aSizeY = Math.max(300, aSizeY - 30); 
-                    canvas.style.width = "100%";
+                    canvas.style.width = "90%";
                     canvas.style.height = "100vh";
 
-                    var aDevicePixelRatio = window.devicePixelRatio || 1;
-                    canvas.width = aSizeX * aDevicePixelRatio;
-                    canvas.height = aSizeY * aDevicePixelRatio;
+                    //var aDevicePixelRatio = window.devicePixelRatio || 1;
+                    //canvas.width = aSizeX * aDevicePixelRatio * 0.5;
+                    //canvas.height = aSizeY * aDevicePixelRatio * 0.5;
 
                 }
 
-                window.onresize = updateCanvasSize;
+                //window.onresize = updateCanvasSize;
 
 
                 self.MyViewer = await new MyViewer({
