@@ -204,7 +204,7 @@ Module['FS_createPath']("/data", "ubweb", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/sectionTexture.png", "start": 5535, "end": 115588}, {"filename": "/data/ubweb/ArtSchool4.ubweb", "start": 115588, "end": 4132292}], "remote_package_size": 4132292});
+    loadPackage({"files": [{"filename": "/data/background.png", "start": 0, "end": 2327}, {"filename": "/data/background_nz.png", "start": 2327, "end": 3933}, {"filename": "/data/background_pz.png", "start": 3933, "end": 5535}, {"filename": "/data/sectionTexture.png", "start": 5535, "end": 122064}, {"filename": "/data/ubweb/ArtSchool4.ubweb", "start": 122064, "end": 4138768}], "remote_package_size": 4138768});
 
   })();
 
