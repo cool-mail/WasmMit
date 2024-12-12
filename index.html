@@ -5,6 +5,8 @@
     <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+    <link rel="stylesheet" href="all.min.css" />
     <style type="text/css">
         * {
             padding: 0;
@@ -27,7 +29,7 @@
             position: absolute;
             justify-content: center;
             align-items: center;
-            font-size: 40pt;
+            font-size: 25pt;
         }
 
         div#mainBlock {
@@ -35,36 +37,24 @@
             height: 100%;
             white-space: nowrap;
             overflow: hidden;
-            background-color: dodgerblue;
         }
 
         nav {
             height: 100vh;
             width: 23ex;
             padding: 10px;
-            transform: translateX(200px);
+            transform: translateX(-23ex);
             transition: transform .5s ease-in-out;
-            display: inline-block;
+            background-color: dodgerblue;
             vertical-align: top;
+            position: fixed;
         }
 
             nav.active {
                 transform: translateX(0);
             }
 
-            nav .logoMenuInvisible {
-                position: fixed;
-                display: inline-block;
-                border: 2px solid green;
-                font-size: 18pt;
-                margin: 1em;
-                color: white;
-                background: dodgerblue;
-                font-weight: 700;
-                font-size: large;
-            }
-
-            nav .logoMenuVisible {
+            nav .logo {
                 margin: 10px 0 20px;
                 color: white;
                 font-weight: 700;
@@ -97,15 +87,36 @@
                         padding: 10px;
                     }
 
+        button#buttonMenu {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border: 1px solid dodgerblue;
+            color: dodgerblue;
+            background-color: #fff;
+            padding: 3px 5px;
+            border-radius: 3px;
+            position: fixed;
+            top: 2ex;
+            left: 2ex;
+            transform: translateX(0);
+            transition: background-color .3s ease, transform .47s ease-in-out;
+        }
+
+            button#buttonMenu:hover {
+                background-color: dodgerblue;
+                color: #fff;
+            }
+
+            button#buttonMenu.active {
+                transform: translateX(27ex);
+            }
+
         canvas {
             border: 0 none;
             display: inline-block;
             vertical-align: top;
         }
-
-
-
-
     </style>
     <title>Пример</title>
 </head>
@@ -125,8 +136,8 @@
 
     <div id="mainBlock" style="display:none;">
         <nav class="active">
-            <div id="buttonMenu" class="logoMenuVisible">
-                <button onclick="toggleMenu();">Действия</button>                
+            <div class="logo">
+                Действия
             </div>
             <ul id="menu">
                 <li><button onclick="self.MyViewer.createSectionPlaneByLevelId('3SV3DKf65A28IpPmY9Uc79'); deactivateMenu();">Отсечь по 1-ый этаж</button></li>
@@ -137,8 +148,10 @@
                 <li><button onclick="self.MyViewer.createSectionBox(); deactivateMenu();">Секущий куб</button></li>
                 <li><button onclick="self.MyViewer.mapNextDraft(); deactivateMenu();">Проекция документа</button></li>
                 <li><button onclick="self.MyViewer.resetToDefaultState(); deactivateMenu();">Перезагрузить</button></li>
-            </ul>            
+            </ul>
         </nav>
+
+        <button id="buttonMenu" class="active"><i class="fa-solid fa-bars"></i></button>
 
         <canvas id="canvas" oncontextmenu="return false;" tabindex=-1></canvas>
     </div>
@@ -181,7 +194,7 @@
                     var aSizeY = Math.min(window.innerHeight, window.screen.availHeight);
                     aSizeX = Math.max(300, aSizeX - 30);
                     aSizeY = Math.max(300, aSizeY - 30); 
-                    canvas.style.width = "90%";
+                    canvas.style.width = "100%";
                     canvas.style.height = "100vh";
 
                     //var aDevicePixelRatio = window.devicePixelRatio || 1;
@@ -218,25 +231,13 @@
 
         initViewer();
 
-        
-        var menu = document.querySelector('#menu');
-        var buttonMenu = document.querySelector('#buttonMenu');
+        const nav = document.querySelector('nav');
+        const btn = document.querySelector('#buttonMenu');
 
-        function activateMenu() {
-            menu.style.display = 'block';
-            buttonMenu.style.display = 'none';
-            
-        }
-
-        function deactivateMenu() {
-            menu.style.display = 'none';
-            buttonMenu.className = 'logoMenuInvisible';
-        }
-
-        function toggleMenu() {
-            deactivateMenu();
-
-        }
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            btn.classList.toggle('active');
+        })
 
     </script>
 </body>
