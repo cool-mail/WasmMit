@@ -46,7 +46,7 @@
             transition: transform .5s ease-in-out;
             background-color: #1e90ff;
             vertical-align: top;
-            position: fixed
+            position: fixed;
         }
 
             nav.active {
@@ -60,10 +60,14 @@
                 font-size: large
             }
 
-            nav ul li {
-                padding: 10px;
-                font-weight: 500
-            }
+            nav .about {
+                margin-top: 2em;                
+            }        
+
+        nav ul li {
+            padding: 10px;
+            font-weight: 500
+        }
 
                 nav ul li button {
                     text-decoration: none;
@@ -116,6 +120,26 @@
             display: inline-block;
             vertical-align: top
         }
+
+        dialog.aboutDialog {
+            position: fixed;
+            width: 20em;
+            top: 50%;
+            left: 50%;
+            margin-top: -10em;
+            margin-left: -10em;
+            border:none;
+        }
+
+        dialog.aboutDialog *{
+            margin: 1ex;
+        }
+
+            dialog.aboutDialog button {
+                float:right;
+                background-color: beige;
+                font-weight:700;
+            }
     </style>
     <title>Пример</title>
 </head>
@@ -134,7 +158,8 @@
     </figure>
     <div id="mainBlock" style="display:none">
         <nav class="active">
-            <div class="logo">Действия</div><ul id="menu">
+            <div class="logo">Действия</div>
+            <ul id="menu">
                 <li><button onclick='self.MyViewer.createSectionPlaneByLevelId("3SV3DKf65A28IpPmY9Uc79")'>Отсечь по 1-ый этаж</button></li>
                 <li><button onclick='self.MyViewer.createSectionPlaneByLevelId("3SV3DKf65A28IpPmY9UcT_")'>Отсечь по 2-ой этаж</button></li>
                 <li><button onclick="self.MyViewer.highlightErrors()">Найти ошибки</button></li>
@@ -144,10 +169,23 @@
                 <li><button onclick="self.MyViewer.mapNextDraft()">Проекция документа</button></li>
                 <li><button onclick="self.MyViewer.resetToDefaultState()">Перезагрузить</button></li>
             </ul>
+            <ul class="about">
+                <li><button onclick='document.querySelector("dialog").showModal()'>Что это?</button></li>
+            </ul>
         </nav>
         <button id="buttonMenu" class="active"><i class="fa-solid fa-bars"></i></button>
         <canvas id="canvas" oncontextmenu="return!1" tabindex="-1"></canvas>
     </div>
+
+    <dialog class="aboutDialog">
+        <div>Это пример небольшого веб-приложения, призванный проиллюстрировать чем я, автор этого веб-приложения, занимался в последнее время на своем текущем месте работы. В начале загружается 3D сцена с макетом здания, которое, как предполагается, будет построенно в будущем. Затем пользователь может провести серию тестов на предмет ошибок проектирования и соответствия техническим регламентам.</div>
+        <div>Написать автору:</div>
+        <div><a href="https://t.me/my_official_telegram">https://t.me/my_official_telegram</a></div>
+        <div><a href="mailto:my_official@rambler.ru">my_official@rambler.ru</a></div>
+        <div><a href="mailto:my_official@outlook.com">my_official@outlook.com</a></div>        
+        <button autofocus onclick='document.querySelector("dialog").close()'>Понятно</button>
+    </dialog>    
+
     <script type="module" charset="utf-8">
         import MyViewer from './MyViewer.js';
         function isWasmSupported() {
