@@ -208,7 +208,7 @@
             } catch (r) {
                 console.error(r), console.error(r.stack), e.style.display = "none", t.style.display = "flex", s.style.display = "none";
                 //document.querySelector("#errorMsg").textContent = r.message;
-                alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack);
+                alert('Ошибка ' + r.name + ":" + r.message + "\n" + r.stack);
             }
         }
         initViewer();
