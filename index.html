@@ -28,7 +28,7 @@
             position: absolute;
             justify-content: center;
             align-items: center;
-            font-size: 20pt
+            font-size: 15pt
         }
 
         div#mainBlock {
@@ -203,11 +203,11 @@
                     var e = document.getElementById("canvas"), t = Math.min(window.innerWidth, window.screen.availWidth), n = Math.min(window.innerHeight, window.screen.availHeight);
                     t = Math.max(300, t - 30), n = Math.max(300, n - 30), e.style.width = "100%", e.style.height = "100vh"
                 }                
-                throw 1;
+                
                 window.onresize = o, self.MyViewer = await new MyViewer({ canvas: n }), e.style.display = "none", t.style.display = "none", s.style.display = "block", o(), self.MyViewer.startViewer()
             } catch (r) {
                 console.error(r), console.error(r.stack), e.style.display = "none", t.style.display = "flex", s.style.display = "none";
-                document.querySelector("#errorMsg").textContent = r.stack;
+                document.querySelector("#errorMsg").textContent = r.message;
             }
         }
         initViewer();
