@@ -195,16 +195,19 @@
         }
         async function initViewer() {
             try {
+                
                 var e = document.querySelector("#preloaderBlock"), t = document.querySelector("#errorBlock"), n = document.querySelector("#canvas"), s = document.querySelector("#mainBlock");
-                if (!isWasmSupported()) throw document.querySelector("#errorMsg").textContent = "Ваш браузер не поддерживает технологию WebAssembly, либо она выключена в настройках браузера. Обновите браузер либо перезайдите на страницу с помощью другого браузера. Запрет работы JavaScript также может быть причиной неполадок", new Error("WebAssembly is not supported");
+                if (!isWasmSupported())
+                    throw document.querySelector("#errorMsg").textContent = "Ваш браузер не поддерживает технологию WebAssembly, либо она выключена в настройках браузера. Обновите браузер либо перезайдите на страницу с помощью другого браузера. Запрет работы JavaScript также может быть причиной неполадок", new Error("WebAssembly is not supported");
                 function o() {
                     var e = document.getElementById("canvas"), t = Math.min(window.innerWidth, window.screen.availWidth), n = Math.min(window.innerHeight, window.screen.availHeight);
                     t = Math.max(300, t - 30), n = Math.max(300, n - 30), e.style.width = "100%", e.style.height = "100vh"
-                }
+                }                
 
                 window.onresize = o, self.MyViewer = await new MyViewer({ canvas: n }), e.style.display = "none", t.style.display = "none", s.style.display = "block", o(), self.MyViewer.startViewer()
             } catch (r) {
-                console.error(r), console.error(r.stack), e.style.display = "none", t.style.display = "flex", s.style.display = "none"
+                console.error(r), console.error(r.stack), e.style.display = "none", t.style.display = "flex", s.style.display = "none";
+                document.querySelector("#errorMsg").textContent = r;
             }
         }
         initViewer();
