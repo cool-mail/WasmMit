@@ -207,7 +207,8 @@
                 window.onresize = o, self.MyViewer = await new MyViewer({ canvas: n }), e.style.display = "none", t.style.display = "none", s.style.display = "block", o(), self.MyViewer.startViewer()
             } catch (r) {
                 console.error(r), console.error(r.stack), e.style.display = "none", t.style.display = "flex", s.style.display = "none";
-                document.querySelector("#errorMsg").textContent = r.message;
+                //document.querySelector("#errorMsg").textContent = r.message;
+                alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack);
             }
         }
         initViewer();
